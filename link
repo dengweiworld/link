@@ -1,0 +1,27 @@
+     if(head_online==NULL)//传进来的是个空链表
+	  return;
+     Pmen temp=head_online;
+     if(temp->data.live < num)//如果删除的是头指针
+     {
+	  head_online=head_online->next;
+	  free(temp);
+	  (*flag)=(*flag)+1;//有删除情况  flag+1;
+	  return;
+     }
+     Pmen p,q;
+     p=head_online;
+     q=p->next;
+     while(q!=NULL)
+     {
+	  if(q->data.live < num)
+	  {
+	       p->next=q->next;
+	       free(q);
+	       ++(*flag);//有删除情况  flag+1;
+	       return;
+	  }
+	  p=p->next;
+	  q=p->next;
+     }	 
+
+}
